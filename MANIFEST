@@ -20,7 +20,17 @@ echo "Y" | sudo apt-get install npm
 echo "Y" | sudo apt-get install mosquitto-clients
 
 # mps youtube
+
+echo "Y" | sudo apt-get install python3-pip
+cd
+git clone https://github.com/mps-youtube/mps-youtube.git
+cd mps-youtube
+pip3 install mps_youtube
+# error with dashmpd
 echo "Y" | sudo apt-get install mps-youtube
+sudo curl https://yt-dl.org/downloads/2016.04.01/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
 # mpsyt, then /pink floyd, then "4"
 # cant get to work... key error dashmpd
 
