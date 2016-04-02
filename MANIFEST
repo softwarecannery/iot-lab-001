@@ -106,7 +106,8 @@ mkdir unity && cd unity
 # 951 mb takes a long time
 wget http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb
 cd && chown -R sc ./unity && cd unity
-apt-get install  lib32gcc1 lib32stdc++6 libc-dev-bin libc6 libc6-dev libc6-i386 libc6 unity-editor-5.1.0f3*.deb
+apt-get install  lib32gcc1 lib32stdc++6 libc-dev-bin libc6 libc6-dev libc6-i386 libc6 
+apt-get install unity-editor-5.1.0f3*.deb
 
 
 
