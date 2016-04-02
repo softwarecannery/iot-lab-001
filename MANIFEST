@@ -5,7 +5,10 @@ mkdir tmp
 
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 echo "Y" | sudo apt-get install nodejs
-echo "Y" | sudo apt-get install arduino
+
+# install arduino by hand since we want latest with support for nodemcu
+#echo "Y" | sudo apt-get install arduino
+
 # for serial port
 sudo usermod -a -G dialout sc
 echo "Y" | sudo apt-get install npm
@@ -34,7 +37,9 @@ echo "Y" | sudo apt-get install libudev-dev
 
 npm init --yes
 
-npm install speaker
+#speaker doesn't compile
+#npm install speaker
+
 npm install cylon
 npm install cylon-ble
 npm install cylon-sphero
@@ -45,8 +50,7 @@ npm install cylon-speech
 ln -s node_modules/.bin/cylon-ble-scan .
 npm install mqtt
 
-# wait on leapmotion
-#npm install cylon-leapmotion
+npm install cylon-leapmotion
 
 # problems with serialport install
 # npm install serialport
@@ -56,6 +60,9 @@ npm install cylon-ardrone
 npm install cylon-i2c
 npm install cylon-mip
 npm install node-red
+npm install node-red-bluemix-nodes
+npm install node-red-node-watson
+
 ln -s node_modules/.bin/node-red .
 npm install sensortag
 
@@ -90,117 +97,29 @@ cd && chown -R sc ./canarymod
 # Unity
 cd
 mkdir unity && cd unity
-# 951 mb
-#wget http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb
-cd && chown -R sc ./unity
-#The following extra packages will be installed:
-#  lib32gcc1 lib32stdc++6 libc-dev-bin libc6 libc6-dev libc6-i386
-#Suggested packages:
-#  glibc-doc
-#The following NEW packages will be installed:
-#  lib32gcc1 lib32stdc++6 libc6-i386
-#The following packages will be upgraded:
-#  libc-dev-bin libc6 libc6-dev
+# 951 mb takes a long time
+wget http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb
+cd && chown -R sc ./unity && cd unity
+apt-get install  lib32gcc1 lib32stdc++6 libc-dev-bin libc6 libc6-dev libc6-i386 libc6 unity-editor-5.1.0f3*.deb
 
 
 
-#sudo nodejs ./sphero.js
 
-# Wait on leap motion
-#cd ~/Downloads
-#wget https://warehouse.leapmotion.com/apps/4186/download
-#tar -zxpf download 
-#cd Leap_Motion*linux
-#sudo dpkg -i Leap*x64*.deb
+cd ~/Downloads
+wget https://warehouse.leapmotion.com/apps/4186/download
+tar -zxpf download 
+cd Leap_Motion*linux
+sudo dpkg -i Leap*x64*.deb
 # errors ok
 #LeapControlPanel... "Allow Web Apps" and "Allow Background Apps".
 #note: leap2mqtt, leapdrone
 #-- turn off lock screen in Linux system settings
 
+# get latest arduino
+# https://www.arduino.cc/en/Main/Donate
+#$Install the ESP8266 Board Package
+#$Enter http://arduino.esp8266.com/stable/package_esp8266com_index.json
+# into Additional Board Manager URLs field in the Arduino v1.6.4+ preferences.  
+
+
 cd
-
-
-cat > cylon-firmata.js << XX-CYLON-FIRMATA
-var Cylon = require('cylon');
-
-Cylon.robot({
-  connections: {
-    arduino: { adaptor: 'firmata', port: '/dev/ttyACM0' }
-  },
-
-  devices: {
-    led: { driver: 'led', pin: 13 }
-  },
-
-  work: function(my) {
-    every((1).second(), my.led.toggle);
-  }
-}).start();
-XX-CYLON-FIRMATA
-
-
-
-cat > cylon-sphero-ble.js << XX-CYLON-SPHERO-BLE
-var Cylon = require('cylon');
-
-Cylon.robot({
-  connections: {
-    bluetooth: { adaptor: 'central', uuid: 'cc360e85785e', module: 'cylon-ble'}
-  },
-
-  devices: {
-    bb8: { driver: 'bb8', module: 'cylon-sphero-ble'}
-  },
-
-  work: function(my) {
-    my.bb8.color(0x00FFFF);
-
-    after(500, function() {
-      my.bb8.color(0xFF0000);
-    });
-
-    after(1000, function() {
-      my.bb8.roll(60, 0);
-    });
-
-    after(2000, function() {
-      my.bb8.roll(60, 180);
-    });
-
-    after(3000, function() {
-      my.bb8.stop();
-    });
-  }
-}).start();
-
-XX-CYLON-SPHERO-BLE
-
-cat > ardrone.js << XX-DRONE
-
-var Cylon = require('cylon');
-
-Cylon.robot({
-  connections: {
-    ardrone: { adaptor: 'ardrone', port: '192.168.168.168' }
-  },
-
-  devices: {
-    drone: { driver: 'ardrone' }
-  },
-
-  work: function(my) {
-    my.drone.takeoff();
-    after((4).seconds(), function() {my.drone.up(1);});
-    after((5).seconds(), function() {my.drone.hover();});
-    after((6).seconds(), function() {my.drone.frontFlip(1);});
-    after((8).seconds(), function() {my.drone.hover(1);});
-    after((10).seconds(), function() {my.drone.down(1);});
-    after((12).seconds(), function() {my.drone.hover();});
-    after((14).seconds(), function() {my.drone.left(1);});
-    after((15).seconds(), function() {my.drone.right(1);});
-    after((17).seconds(), function() {my.drone.hover();});
-    after((18).seconds(), function() { my.drone.land(); });
-    after((22).seconds(), function() { my.drone.stop(); });
-  }
-}).start();
-XX-DRONE
