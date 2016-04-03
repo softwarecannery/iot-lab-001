@@ -1,0 +1,5 @@
+mqtt:
+  type: task
+  script: 
+    - execute as_player "jsp cheekyUp"
+    - explode <l@location.precise_cursor_on[50]>
