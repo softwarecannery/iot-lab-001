@@ -97,19 +97,20 @@ npm install node-red-node-twitter
 
 # Minecraft
 cd
-mkdir canarymod && cd canarymod
-wget http://scriptcraftjs.org/download/latest/CanaryMod-1.8.0-1.2.1-SNAPSHOT-shaded.jar
+mkdir minecraft && cd minecraft
+#wget http://scriptcraftjs.org/download/latest/CanaryMod-1.8.0-1.2.1-SNAPSHOT-shaded.jar
+#mv CanaryMod*.jar canarymod.jar
 wget http://scriptcraftjs.org/download/latest/spigot-1.9.jar
-mv CanaryMod*.jar canarymod.jar
 wget https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
 wget scriptcraftjs.org/download/extras/mqtt/sc-mqtt.jar
-mv CanaryMod*.jar canarymod.jar
-wget http://scriptcraftjs.org/download/latest/scriptcraft-3.1.12/scriptcraft.jar
-# mqttt
+wget http://scriptcraftjs.org/download/latest/scriptcraft-3.2.0/scriptcraft.jar
+wget http://ci.citizensnpcs.co/job/Denizen/lastSuccessfulBuild/artifact/target/denizen-0.9.8-SNAPSHOT.jar
 wget https://github.com/walterhiggins/scriptcraft-extras-mqtt/archive/master.zip
-# move to plugins directory after starting canary once
-cd && chown -R sc ./canarymod
-# java -cp sc-mqtt.jar:spigot-1.9.jar org.bukkit.craftbukkit.Main
+wget http://ci.citizensnpcs.co/job/Citizens2/lastSuccessfulBuild/artifact/target/citizens-2.0.17-SNAPSHOT.jar
+java -cp sc-mqtt.jar:spigot-1.9.jar org.bukkit.craftbukkit.Main
+# move to plugins directory after starting canary once and fixing eula
+cd && chown -R sc ./minecraft
+java -cp sc-mqtt.jar:spigot-1.9.jar org.bukkit.craftbukkit.Main
 
 
 # Unity
@@ -118,8 +119,8 @@ mkdir unity && cd unity
 # 951 mb takes a long time
 wget http://download.unity3d.com/download_unity/unity-editor-5.1.0f3+2015082501_amd64.deb
 cd && chown -R sc ./unity && cd unity
-apt-get install  lib32gcc1 lib32stdc++6 libc-dev-bin libc6 libc6-dev libc6-i386 libc6 
-apt-get install unity-editor-5.1.0f3*.deb
+echo "Y" | apt-get install  lib32gcc1 lib32stdc++6 libc-dev-bin libc6 libc6-dev libc6-i386 libc6 
+echo "Y" | apt-get install unity-editor-5.1.0f3*.deb
 
 
 
