@@ -30,9 +30,9 @@ pip3 install mps_youtube
 echo "Y" | sudo apt-get install mps-youtube
 sudo curl https://yt-dl.org/downloads/2016.04.01/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
-
 # mpsyt, then /pink floyd, then "4"
 # cant get to work... key error dashmpd
+cd ..
 
 # g++ needed for node-red?
 # g++ and git already installed?
