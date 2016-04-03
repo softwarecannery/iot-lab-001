@@ -3,7 +3,8 @@ cd  ~
 # tmp needed?
 mkdir tmp   
 
-
+echo "Y" | sudo apt-get install openjdk-7-jre-headless
+echo "Y" | sudo apt-get install openjdk-7-jre
 echo "Y" | sudo apt-get install ssh
 
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
@@ -98,16 +99,17 @@ npm install node-red-node-twitter
 cd
 mkdir canarymod && cd canarymod
 wget http://scriptcraftjs.org/download/latest/CanaryMod-1.8.0-1.2.1-SNAPSHOT-shaded.jar
+wget http://scriptcraftjs.org/download/latest/spigot-1.9.jar
 mv CanaryMod*.jar canarymod.jar
 wget https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
 wget scriptcraftjs.org/download/extras/mqtt/sc-mqtt.jar
 mv CanaryMod*.jar canarymod.jar
-mkdir plugins && cd plugins
 wget http://scriptcraftjs.org/download/latest/scriptcraft-3.1.12/scriptcraft.jar
 # mqttt
-cd ..
 wget https://github.com/walterhiggins/scriptcraft-extras-mqtt/archive/master.zip
+# move to plugins directory after starting canary once
 cd && chown -R sc ./canarymod
+# java -cp sc-mqtt.jar:spigot-1.9.jar org.bukkit.craftbukkit.Main
 
 
 # Unity
