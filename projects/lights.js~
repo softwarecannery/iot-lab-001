@@ -8,7 +8,7 @@ var Cylon = require("cylon");
 Cylon.robot({
   connections: { 
     hue: { adaptor: "hue", host: process.argv[2], username: process.argv[3] },
-    server: { adaptor: 'mqtt', host: 'mqtt://192.168.168.105:1883' }
+    server: { adaptor: 'mqtt', host: 'mqtt://192.168.168.107:1883' }
   },
 
   devices: {
