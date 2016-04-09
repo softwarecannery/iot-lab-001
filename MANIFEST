@@ -59,6 +59,7 @@ npm install cylon-ble
 npm install cylon-sphero
 npm install cylon-sphero-ble
 npm install cylon-ble
+npm install cylon-hue
 npm install cylon-mqtt
 npm install cylon-speech
 ln -s node_modules/.bin/cylon-ble-scan .
