@@ -1,0 +1,24 @@
+#!/usr/bin/expect --
+
+set timeout 60
+
+set ip 192.168.168.246
+
+spawn bash
+expect "*sc"
+send "scp ev3.sh robot@$ip:/tmp\r"
+expect "password"
+send "maker\r"
+expect "*sc"
+
+send "ssh robot@$ip\r"
+expect "password"
+send "maker\r"
+expect "*ev3dev"
+send "cd /tmp\r"
+expect "*ev3dev"
+send "chmod +x ./ev3.sh\r"
+expect "*ev3dev"
+send "./ev3.sh\r"
+
+sleep 1200
