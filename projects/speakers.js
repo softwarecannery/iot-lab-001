@@ -2,12 +2,12 @@ var Cylon = require('cylon');
 
 Cylon.robot({
   connections: {
-    server: { adaptor: 'mqtt', host: 'mqtt://192.168.168.108:1883' },
+    server: { adaptor: 'mqtt', host: 'mqtt://192.168.168.105:1883' },
     audio: { adaptor: 'speech' }
   },
 
   devices: {
-   message: { driver: 'mqtt', topic: 'roll', adaptor: 'mqtt', connection: 'server' },
+   message: { driver: 'mqtt', topic: 'iot', adaptor: 'mqtt', connection: 'server' },
     voice1: { driver: 'speech', language: "english", gender: "f", speed: 200, connection: 'audio' },
   },
 
