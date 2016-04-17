@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#for f in red green right cheeky-down cheeky-down cheeky-up cheeky-left cheeky-right blue roll-short right left cheeky-fire right
+for f in cheeky-park cheeky-right cheeky-up cheeky-right cheeky-right cheeky-left cheeky-fire cheeky-fire
 
-for f in bb8-roll-up bb8-roll-left bb8-roll-back bb8-roll-right bb8-red bb8-green bb8-blue bb8-spin-right bb8-spin-left bb8-spin-stop bb8-yes bb8-no
+#for f in bb8-roll-up bb8-roll-left bb8-roll-back bb8-roll-right bb8-red bb8-green bb8-blue bb8-spin-right bb8-spin-left bb8-spin-stop bb8-yes bb8-no
 do
   mosquitto_pub -h 192.168.168.105 -t iot -m $f
   sleep 2.0
