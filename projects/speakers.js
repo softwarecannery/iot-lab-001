@@ -8,7 +8,7 @@ Cylon.robot({
 
   devices: {
    message: { driver: 'mqtt', topic: 'iot', adaptor: 'mqtt', connection: 'server' },
-    voice1: { driver: 'speech', language: "english", gender: "f", speed: 200, connection: 'audio' },
+    voice1: { driver: 'speech', language: "english", gender: "f", speed: 275, connection: 'audio' },
   },
 
   work: function(my) {
