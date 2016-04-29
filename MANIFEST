@@ -141,6 +141,8 @@ sudo dpkg -i Leap*x64*.deb
 #$Install the ESP8266 Board Package
 #$Enter http://arduino.esp8266.com/stable/package_esp8266com_index.json
 # into Additional Board Manager URLs field in the Arduino v1.6.4+ preferences.  
+wget https://github.com/esp8266/Arduino/archive/master.zip
+mv master.zip esp8266.zip
 
 
 cd
