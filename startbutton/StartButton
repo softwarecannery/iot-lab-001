@@ -8,6 +8,8 @@ button .b5 -text "node-red client" -command {exec /opt/google/chrome/chrome http
 button .b6 -text "top" -command {exec /usr/bin/xfce4-terminal -e /usr/bin/top &} -background silver -width 10
 button .b7 -text "mqtt log" -command {exec /usr/bin/tail -f /tmp/log &} -background silver -width 10
 
+source /home/lubuntu/iot-lab-001/startbutton/new.tk
+
 
 label .l -text "MQTT message:"
 entry .e -width 25 -relief sunken -bd 2 -textvariable message
