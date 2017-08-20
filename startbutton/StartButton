@@ -8,10 +8,13 @@ button .b5 -text "node-red client" -command {exec /opt/google/chrome/chrome http
 button .b6 -text "top" -command {exec /usr/bin/xfce4-terminal -e /usr/bin/top &} -background silver -width 10
 button .b7 -text "mqtt log" -command {exec /usr/bin/tail -f /tmp/log &} -background silver -width 10
 
+
 label .l -text "MQTT message:"
 entry .e -width 25 -relief sunken -bd 2 -textvariable message
 focus .e
-button .b8 -text send -command {exec /home/sc/Mosquitto_send.sh "$message" &} -background silver -width 10 
+button .b8 -text send -command {exec /home/sc/Mosquitto_send.sh "$message" &} -background silver -width 10
+
+button .b9 -text new  
 
 
 grid .b0 -row 0 -column 0
@@ -26,5 +29,6 @@ grid .l -row 3 -column 0 -sticky e
 grid .e -row 3 -column 1 -sticky w -columnspan 2
 grid .b8 -row 3 -column 3 
 
+grid .b9 -row 4 -column 0
 
 #pack .b0 .b1 .b2 .b3 .b4 .b5 .b6 -side left
