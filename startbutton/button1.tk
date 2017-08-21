@@ -1,0 +1,2 @@
+button .b1 -text "Minecraft" -command {exec /usr/bin/java -jar /home/sc/minecraft/Minecraft.jar &} -background silver -width 10
+grid .b1 -row 0 -column 1

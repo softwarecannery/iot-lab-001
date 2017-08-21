@@ -1,0 +1,2 @@
+button .b0 -text "brightness" -command {exec /bin/bash /usr/local/bin/brightness 99} -background silver -width 10
+grid .b0 -row 0 -column 0

@@ -1,0 +1,2 @@
+button .b10 -text "new button" -command {exec /usr/bin/tail -f /tmp/log &} -background silver -width 10
+grid .b10 -row 4 -column 1 
