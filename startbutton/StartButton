@@ -1,5 +1,4 @@
 #!/usr/bin/wish
-button .b0 -text "brightness" -command {exec /bin/bash /usr/local/bin/brightness 99} -background silver -width 10
 button .b1 -text "Minecraft" -command {exec /usr/bin/java -jar /home/sc/minecraft/Minecraft.jar &} -background silver -width 10
 button .b2 -text "Arduino" -command {exec /home/sc/arduino-1.6.9/arduino &} -background silver -width 10
 button .b3 -text "Gedit" -command {exec /usr/bin/gedit &} -background silver -width 10
@@ -8,7 +7,10 @@ button .b5 -text "node-red client" -command {exec /opt/google/chrome/chrome http
 button .b6 -text "top" -command {exec /usr/bin/xfce4-terminal -e /usr/bin/top &} -background silver -width 10
 button .b7 -text "mqtt log" -command {exec /usr/bin/tail -f /tmp/log &} -background silver -width 10
 
-source /home/lubuntu/iot-lab-001/startbutton/new.tk
+foreach include_file [ glob /home/lubuntu/iot-lab-001/startbutton/button* ] {
+  source $include_file
+}
+
 
 
 label .l -text "MQTT message:"
